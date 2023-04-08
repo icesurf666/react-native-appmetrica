@@ -34,12 +34,6 @@ abstract class Utils {
         if (configMap.hasKey("installedAppCollecting")) {
             builder.withInstalledAppCollecting(configMap.getBoolean("installedAppCollecting"));
         }
-        if (configMap.hasKey("location")) {
-            builder.withLocation(toLocation(configMap.getMap("location")));
-        }
-        if (configMap.hasKey("locationTracking")) {
-            builder.withLocationTracking(configMap.getBoolean("locationTracking"));
-        }
         if (configMap.hasKey("logs") && configMap.getBoolean("logs")) {
             builder.withLogs();
         }
@@ -60,38 +54,6 @@ abstract class Utils {
         }
 
         return builder.build();
-    }
-
-    static Location toLocation(ReadableMap locationMap) {
-        if (locationMap == null) {
-            return null;
-        }
-
-        Location location = new Location("Custom");
-
-        if (locationMap.hasKey("latitude")) {
-            location.setLatitude(locationMap.getDouble("latitude"));
-        }
-        if (locationMap.hasKey("longitude")) {
-            location.setLongitude(locationMap.getDouble("longitude"));
-        }
-        if (locationMap.hasKey("altitude")) {
-            location.setAltitude(locationMap.getDouble("altitude"));
-        }
-        if (locationMap.hasKey("accuracy")) {
-            location.setAccuracy((float) locationMap.getDouble("accuracy"));
-        }
-        if (locationMap.hasKey("course")) {
-            location.setBearing((float) locationMap.getDouble("course"));
-        }
-        if (locationMap.hasKey("speed")) {
-            location.setSpeed((float) locationMap.getDouble("speed"));
-        }
-        if (locationMap.hasKey("timestamp")) {
-            location.setTime((long) locationMap.getDouble("timestamp"));
-        }
-
-        return location;
     }
 
     private static PreloadInfo toPreloadInfo(ReadableMap preloadInfoMap) {

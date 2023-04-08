@@ -109,16 +109,6 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setLocation(ReadableMap locationMap) {
-        YandexMetrica.setLocation(Utils.toLocation(locationMap));
-    }
-
-    @ReactMethod
-    public void setLocationTracking(boolean enabled) {
-        YandexMetrica.setLocationTracking(enabled);
-    }
-
-    @ReactMethod
     public void setStatisticsSending(boolean enabled) {
         YandexMetrica.setStatisticsSending(reactContext, enabled);
     }
